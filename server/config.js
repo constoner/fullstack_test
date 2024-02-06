@@ -14,6 +14,6 @@ export const firebaseConfig = {
 };
 
 export const shopifyConfig = {
-  URL: "https://cpb-new-developer.myshopify.com/",
+  store: "cpb-new-developer",
   accesToken: "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",
 };
