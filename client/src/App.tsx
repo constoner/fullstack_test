@@ -5,10 +5,7 @@ const App = () => {
   useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
-      .then((resData) => {
-        console.log(resData);
-        setData(resData);
-      });
+      .then((resData) => setData(resData));
   }, []);
   return (
     <div className="App">
@@ -23,7 +20,10 @@ const App = () => {
       {data ? (
         <ul>
           {data.map((item) => (
-            <li key={item.id}>{item.bodyHtml}</li>
+            <li key={item.id}>
+              <img src={item.imageSrc} alt="" />
+              <div dangerouslySetInnerHTML={{ __html: item.bodyHtml }}></div>
+            </li>
           ))}
         </ul>
       ) : null}

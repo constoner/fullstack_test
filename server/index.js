@@ -7,6 +7,7 @@ import {
     doc,
     addDoc,
     getDoc,
+    setDoc,
     getDocs,
     updateDoc,
     deleteDoc,
@@ -20,11 +21,45 @@ const db = getFirestore(firebase);
 
 class Product {
     constructor(id, bodyHtml, imageSrc) {
-        (this.id = id);
-        (this.bodyHtml = bodyHtml);
-        (this.imageSrc = imageSrc);
+        this.id = id;
+        this.bodyHtml = bodyHtml;
+        this.imageSrc = imageSrc;
     };
 }
+
+const createProduct = async (req, res) => {
+    try {
+        const data = req.body;
+        await addDoc(collection(db, 'products'), data);
+        res.status(200).send('product created successfully');
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
+
+const getProducts = async (req, res) => {
+    try {
+        const products = await getDocs(collection(db, 'products'));
+        const productArray = [];
+
+        if (products.empty) {
+            res.status(400).send('No Products found');
+        } else {
+            products.forEach((doc) => {
+                const product = new Product(
+                    doc.id,
+                    doc.data().bodyHtml,
+                    doc.data().imageSrc,
+                );
+                productArray.push(product);
+            });
+
+            res.status(200).send(productArray);
+        }
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+};
 
 const graphqlEndpoint = `https://${shopifyConfig.store}.myshopify.com/admin/api/2023-10/graphql.json`;
 
@@ -57,48 +92,30 @@ fetch(graphqlEndpoint, {
     body: JSON.stringify({ query }),
 })
     .then(response => response.json())
-    .then(data => {
-        // console.log(JSON.stringify(data, null, 2));
-        console.log(data.data.products.edges)
+    .then((output) => {
+        return output.data.products.edges.map((item) => {
+            return {
+                ...new Product(
+                    item.node.id,
+                    item.node.bodyHtml,
+                    item.node.images.edges[0].node.src,
+                )
+            }
+        })
+    }).then((data) => {
+        data.forEach(async (item, index) => {
+            await setDoc(doc(db, "products", `product_id${index}`), {
+                id: item.id,
+                bodyHtml: item.bodyHtml,
+                imageSrc: item.imageSrc,
+            });
+        })
     })
     .catch(error => console.error('Error fetching products:', error));
 
-const createProduct = async (req, res) => {
-    try {
-        const data = req.body;
-        await addDoc(collection(db, 'new_collection'), data);
-        res.status(200).send('product created successfully');
-    } catch (error) {
-        res.status(400).send(error.message);
-    }
-};
-
-const getProducts = async (req, res) => {
-    try {
-        const products = await getDocs(collection(db, 'test_collection'));
-        const productArray = [];
-
-        if (products.empty) {
-            res.status(400).send('No Products found');
-        } else {
-            products.forEach((doc) => {
-                const product = new Product(
-                    doc.id,
-                    doc.data().bodyHtml,
-                    doc.data().imageSrc,
-                );
-                productArray.push(product);
-            });
-
-            res.status(200).send(productArray);
-        }
-    } catch (error) {
-        res.status(400).send(error.message);
-    }
-};
 
 app.get("/", (req, res) => {
-    res.status(200).json("Hello world!");
+    res.status(200);
 })
 
 app.get("/api", (req, res) => {
