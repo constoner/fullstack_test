@@ -1,9 +1,10 @@
 import "dotenv/config";
 import express from "express";
-import router from "./router/router.js";
 
 import { createProduct } from "./utils/db.js";
 import { collectProducts } from "./utils/shop.js";
+
+import router from "./router/router.js";
 
 import { serverConfig } from "./config/config.js";
 

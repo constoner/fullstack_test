@@ -4,7 +4,7 @@ export const rootResponse = (res) => {
     return res.status(200).json("server status on");
 };
 
-export const sendProducts = async (res, dataCallback) => {
+export const getProductsResponse = async (res, dataCallback) => {
     try {
         const products = await dataCallback();
         const productArray = [];

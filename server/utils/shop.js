@@ -1,4 +1,5 @@
 import { shopifyConfig } from "../config/config.js";
+
 import { Product } from "../classes/product.js";
 
 const graphqlEndpoint = `https://${shopifyConfig.store}.myshopify.com/admin/api/2023-10/graphql.json`;
@@ -23,7 +24,19 @@ const query = `
   }
 `;
 
-export const collectProducts = async (putToDB) => {
+const createProducts = (dataArray) => {
+    return dataArray.data.products.edges.map((item) => {
+        return {
+            ...new Product(
+                item.node.id,
+                item.node.bodyHtml,
+                item.node.images.edges[0].node.src,
+            )
+        };
+    });
+};
+
+export const collectProducts = async (dbCallback) => {
     await fetch(graphqlEndpoint, {
         method: 'POST',
         headers: {
@@ -32,20 +45,10 @@ export const collectProducts = async (putToDB) => {
         },
         body: JSON.stringify({ query }),
     })
-        .then(response => response.json())
-        .then((output) => {
-            return output.data.products.edges.map((item) => {
-                return {
-                    ...new Product(
-                        item.node.id,
-                        item.node.bodyHtml,
-                        item.node.images.edges[0].node.src,
-                    )
-                }
-            })
-        }).then((data) => {
+        .then(res => res.json())
+        .then((output) => createProducts(output)).then((data) => {
             data.forEach((item, index) => {
-                putToDB(item, index);
+                dbCallback(item, index);
             })
         }).then(() => console.log("database updated!"))
         .catch(error => console.error('Error fetching products:', error));

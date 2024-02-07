@@ -1,5 +1,3 @@
-import { collection } from "firebase/firestore";
-
 export const serverConfig = {
   PORT: process.env.PORT,
   HOST: process.env.HOST,

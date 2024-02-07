@@ -1,5 +1,3 @@
-import { firebaseConfig } from "../config/config.js";
-
 import { initializeApp } from "firebase/app";
 import {
     getFirestore,
@@ -8,6 +6,8 @@ import {
     setDoc,
     getDocs,
 } from 'firebase/firestore';
+
+import { firebaseConfig } from "../config/config.js";
 
 export const initializeDB = () => {
     const firebase = initializeApp(firebaseConfig);
