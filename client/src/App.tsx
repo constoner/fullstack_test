@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const App = () => {
   const [data, setData] = useState<any[]>();
   useEffect(() => {
-    fetch("/api")
+    fetch("/api/products/")
       .then((res) => res.json())
       .then((resData) => setData(resData));
   }, []);

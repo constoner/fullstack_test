@@ -5,7 +5,6 @@ import {
     getFirestore,
     collection,
     doc,
-    addDoc,
     setDoc,
     getDocs,
 } from 'firebase/firestore';
