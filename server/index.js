@@ -1,16 +1,14 @@
+import "dotenv/config";
 import express from "express";
-import { initializeApp } from "firebase/app";
 import { serverConfig, firebaseConfig, shopifyConfig } from "./config.js";
+import { initializeApp } from "firebase/app";
 import {
     getFirestore,
     collection,
     doc,
     addDoc,
-    getDoc,
     setDoc,
     getDocs,
-    updateDoc,
-    deleteDoc,
 } from 'firebase/firestore';
 
 const app = express();

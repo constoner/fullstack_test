@@ -1,19 +1,19 @@
 export const serverConfig = {
-  PORT: 4000,
-  HOST: "localhost",
-  HOST_URL: "http://localhost:4000"
+  PORT: process.env.PORT,
+  HOST: process.env.HOST,
+  HOST_URL: process.env.HOST_URL,
 }
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAN6CicYlwU70ZG1zuDqQ7-4lKpGwvYgIY",
-  authDomain: "fullstack-c9b93.firebaseapp.com",
-  projectId: "fullstack-c9b93",
-  storageBucket: "fullstack-c9b93.appspot.com",
-  messagingSenderId: "1027035017215",
-  appId: "1:1027035017215:web:5a099f348ea6e005a341ca"
-};
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID
+}
 
 export const shopifyConfig = {
-  store: "cpb-new-developer",
-  accesToken: "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",
+  store: process.env.STORE_NAME,
+  accesToken: process.env.ACCES_TOKEN,
 };
