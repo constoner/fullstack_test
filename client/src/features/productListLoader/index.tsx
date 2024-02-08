@@ -8,20 +8,30 @@ import { trimMockupData } from "../../shared/utils/mockupUtils";
 import { IProduct } from "../../shared/types";
 
 const ProductListLoader = () => {
-  const { data, isLoading } = useGetProductsQuery<IProduct[] | any>(null);
-
+  const { data, isLoading, error } = useGetProductsQuery<IProduct[] | any>(
+    null
+  );
+  console.log(error);
   return (
-    <ProductList>
-      {isLoading ? (
-        <Loading />
+    <>
+      {error ? (
+        <div className="w-100 h-100 p-5 bg-light fs-5 text-center">
+          {error.status} {JSON.stringify(error.data)}
+        </div>
       ) : (
-        data?.map((item: IProduct) => (
-          <li className="list-group-item pe-3 pb-3 col" key={item.id}>
-            <ProductCard content={trimMockupData(item.bodyHtml)} />
-          </li>
-        ))
+        <ProductList>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            data?.map((item: IProduct) => (
+              <li className="list-group-item pe-3 pb-3 col" key={item.id}>
+                <ProductCard content={trimMockupData(item.bodyHtml)} />
+              </li>
+            ))
+          )}
+        </ProductList>
       )}
-    </ProductList>
+    </>
   );
 };
 
