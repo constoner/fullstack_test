@@ -29,6 +29,7 @@
   & p {
     margin: 0;
     font-size: 14px;
+    color: var(--bs-body);
   }
 
   & p:first-of-type {
@@ -37,9 +38,11 @@
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
+    color: var(--bs-dark-text-emphasis);
   }
 
   & strong {
     display: block;
+    color: var(--bs-dark-text-emphasis);
   }
 }
