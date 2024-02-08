@@ -18,3 +18,9 @@ export const shopifyConfig = {
   store: process.env.STORE_NAME,
   accesToken: process.env.ACCES_TOKEN,
 };
+
+export const routesConfig = {
+  home: "/",
+  api: "/api",
+  products: "/products",
+};

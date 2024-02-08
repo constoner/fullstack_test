@@ -3,11 +3,13 @@ import { Router } from "express";
 import { rootResponse, getProductsResponse } from "./controllers.js";
 import { getProducts } from "../utils/db.js";
 
+import { routesConfig } from "../config/config.js";
+
 const router = Router();
 
-router.get("/", (req, res) => rootResponse(res));
+router.get(routesConfig.home, (req, res) => rootResponse(res));
 
-router.get("/products", (req, res) => {
+router.get(routesConfig.products, (req, res) => {
     getProductsResponse(res, getProducts);
 });
 

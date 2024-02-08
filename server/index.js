@@ -6,7 +6,7 @@ import { collectProducts } from "./utils/shop.js";
 
 import router from "./router/router.js";
 
-import { serverConfig } from "./config/config.js";
+import { serverConfig, routesConfig } from "./config/config.js";
 
 collectProducts(createProduct);
 
@@ -14,8 +14,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/", router);
-app.use("/api", router);
+app.use(routesConfig.home, router);
+app.use(routesConfig.api, router);
 
 
 app.listen(serverConfig.PORT, () => console.log(`===== SERVER STARTED ON PORT ${serverConfig.PORT} =====`));
