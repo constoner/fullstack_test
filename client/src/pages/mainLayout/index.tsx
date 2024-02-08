@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
 import Header from "../../widgets/header";
 import Footer from "../../widgets/footer";

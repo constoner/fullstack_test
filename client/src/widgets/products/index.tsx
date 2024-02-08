@@ -1,9 +1,7 @@
-import React from "react";
-
-import ProductList from "../../entities/productList";
+import ProductListLoader from "../../features/productListLoader";
 
 const Products = () => {
-  return <ProductList />;
+  return <ProductListLoader />;
 };
 
 export default Products;

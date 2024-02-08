@@ -1,33 +1,7 @@
-import React from "react";
+import { ReactElement } from "react";
 
-import { useGetProductsQuery } from "../../shared/api";
-
-import { trimMockupData } from "../../shared/utils/mockupUtils";
-
-interface IProduct {
-  id: string;
-  bodyHtml: string;
-  imageSrc: string;
-}
-
-const ProductList = () => {
-  const { data, isLoading } = useGetProductsQuery<IProduct[] | any>(1);
-
-  return (
-    <ul>
-      {isLoading
-        ? null
-        : data?.map((item: IProduct) => (
-            <li key={item.id}>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: trimMockupData(item.bodyHtml),
-                }}
-              ></div>
-            </li>
-          ))}
-    </ul>
-  );
+const ProductList = ({ children }: { children: ReactElement }) => {
+  return <ul className="h-100 m-0 p-0">{children}</ul>;
 };
 
 export default ProductList;

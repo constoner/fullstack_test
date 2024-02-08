@@ -1,5 +1,3 @@
-import React from "react";
-
 const Contacts = () => {
   return (
     <div className="d-flex flex-wrap justify-content-end align-items-center fw-semibold flex-shrink-1 w-75">

@@ -9,19 +9,19 @@ const appApi = createApi({
 
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: () => `/${API.allProductsUrl}`,
+      query: () => API.allProductsUrl,
 
-      // serializeQueryArgs: ({ endpointName }) => {
-      //   return endpointName;
-      // },
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName;
+      },
 
-      // merge: (currentCache, newItems) => {
-      //   currentCache.results.push(...newItems.results);
-      // },
+      merge: (currentCache, newItems) => {
+        currentCache.results.push(...newItems.results);
+      },
 
-      // forceRefetch({ currentArg, previousArg }) {
-      //   return currentArg !== previousArg;
-      // },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg !== previousArg;
+      },
     }),
   }),
 });

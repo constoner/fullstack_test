@@ -1,6 +1,5 @@
-import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import "./style.css";
+import "./style.scss";
 
 import AppContainer from "./appContainer";
 
