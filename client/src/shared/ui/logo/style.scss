@@ -1,5 +1,5 @@
 .logo {
-  --size: 72px;
+  --size: 48px;
 
   position: relative;
   width: var(--size, 50px);
@@ -27,9 +27,9 @@
     top: 50%;
     left: 100%;
     margin: 0;
-    padding-bottom: 8px;
-    font-size: 24px;
-    font-weight: 700;
+    padding-bottom: 6px;
+    font-size: 18px;
+    font-weight: 600;
     line-height: 1;
     background-color: var(--bg-color, transparent);
     transform: translate(-50%, -50%);

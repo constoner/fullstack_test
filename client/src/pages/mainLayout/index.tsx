@@ -7,7 +7,7 @@ const MainLayout = ({ children }: { children: ReactElement }) => {
   return (
     <div className="position-relative d-flex flex-column min-vh-100">
       <Header />
-      <main className="bg-light flex-grow-1 d-flex flex-column">
+      <main className="flex-grow-1 d-flex flex-column bg-body-secondary">
         {children}
       </main>
       <Footer />

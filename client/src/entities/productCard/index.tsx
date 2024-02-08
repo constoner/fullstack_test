@@ -2,12 +2,14 @@ import "./style.scss";
 
 const ProductCard = ({ content }: { content: string }) => {
   return (
-    <li
-      className="product-card"
-      dangerouslySetInnerHTML={{
-        __html: content,
-      }}
-    />
+    <div className="product-card w-100 p-4 shadow bg-light text-dark">
+      <div
+        className="product-card__content"
+        dangerouslySetInnerHTML={{
+          __html: content,
+        }}
+      />
+    </div>
   );
 };
 

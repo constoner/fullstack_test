@@ -14,10 +14,9 @@ const ProductListLoader = () => {
       {isLoading
         ? null
         : data?.map((item: IProduct) => (
-            <ProductCard
-              key={item.id}
-              content={trimMockupData(item.bodyHtml)}
-            />
+            <li className="list-group-item pe-3 pb-3 col" key={item.id}>
+              <ProductCard content={trimMockupData(item.bodyHtml)} />
+            </li>
           ))}
     </ProductList>
   );
