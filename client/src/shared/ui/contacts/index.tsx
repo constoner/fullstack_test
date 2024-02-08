@@ -5,7 +5,7 @@ const Contacts = () => {
         Калинин Константин. 2024
       </p>
       <a
-        className="ms-4 py-1 fs-6 text-decoration-none link-light link-opacity-50 link-opacity-100-hover"
+        className="ms-4 py-1 fs-6 text-decoration-none link-light link-opacity-50 link-opacity-100-hover user-select-none"
         href="https://github.com/constoner/"
         target="_blank"
         rel="noreferrer"
@@ -23,7 +23,7 @@ const Contacts = () => {
         GitHub
       </a>
       <a
-        className="ms-4 py-1 fs-6 text-decoration-none link-light link-opacity-50 link-opacity-100-hover"
+        className="ms-4 py-1 fs-6 text-decoration-none link-light link-opacity-50 link-opacity-100-hover user-select-none"
         href="https://t.me/constoner"
         target="_blank"
         rel="noreferrer"
@@ -41,7 +41,7 @@ const Contacts = () => {
         Telegram
       </a>
       <a
-        className="ms-4 py-1 fs-6 text-decoration-none link-light link-opacity-50 link-opacity-100-hover"
+        className="ms-4 py-1 fs-6 text-decoration-none link-light link-opacity-50 link-opacity-100-hover user-select-none"
         href="tel:+79313482382"
       >
         <svg
@@ -60,7 +60,7 @@ const Contacts = () => {
         Phone
       </a>
       <a
-        className="ms-4 py-1 fs-6 text-decoration-none link-light link-opacity-50 link-opacity-100-hover"
+        className="ms-4 py-1 fs-6 text-decoration-none link-light link-opacity-50 link-opacity-100-hover user-select-none"
         href="mailto:constantin.kalinin@gmail.com"
       >
         <svg
