@@ -9,7 +9,7 @@ const router = Router();
 
 router.get(routesConfig.home, (req, res) => rootResponse(res));
 
-router.get(routesConfig.products, (req, res) => {
+router.get(`${routesConfig.api}${routesConfig.products}`, (req, res) => {
     getProductsResponse(res, getProducts);
 });
 

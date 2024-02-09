@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 app.use(routesConfig.home, router);
-app.use(routesConfig.api, router);
+app.use(`${routesConfig.api}${routesConfig.products}`, router);
 
 
 app.listen(serverConfig.PORT, () => console.log(`===== SERVER STARTED ON PORT ${serverConfig.PORT} =====`));
