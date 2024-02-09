@@ -2,7 +2,7 @@ import Logo from "../../shared/ui/logo";
 
 const Header = () => {
   return (
-    <header className="bg-light sticky-top shadow text-dark-emphasis">
+    <header className="bg-light sticky-top shadow-sm text-dark-emphasis">
       <div className="container p-3">
         <div
           className="d-flex justify-content-between align-items-center flex-wrap"
