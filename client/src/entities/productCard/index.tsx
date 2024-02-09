@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import "./style.scss";
+import "./mockup.scss"; // classNames "product-card" and others added only for mockup data
 
 const ProductCard = ({
   content,

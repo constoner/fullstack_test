@@ -4,7 +4,7 @@ import CardImage from "../../entities/cardImage";
 import ProductCard from "../../entities/productCard";
 
 import { useGetProductsQuery } from "../../shared/api";
-import { trimMockupData } from "../../shared/utils/mockupUtils";
+import { trimMockupData } from "../../shared/utils/mockupUtils"; // functions used only to fit mockup data in product cards
 
 import { IProduct } from "../../shared/types";
 
