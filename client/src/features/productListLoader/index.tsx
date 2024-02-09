@@ -1,5 +1,6 @@
 import Loading from "../../shared/ui/loading";
 import ProductList from "../../entities/productList";
+import CardImage from "../../entities/cardImage";
 import ProductCard from "../../entities/productCard";
 
 import { useGetProductsQuery } from "../../shared/api";
@@ -11,7 +12,7 @@ const ProductListLoader = () => {
   const { data, isLoading, error } = useGetProductsQuery<IProduct[] | any>(
     null
   );
-  console.log(error);
+
   return (
     <>
       {error ? (
@@ -25,7 +26,9 @@ const ProductListLoader = () => {
           ) : (
             data?.map((item: IProduct) => (
               <li className="list-group-item pe-3 pb-3 col" key={item.id}>
-                <ProductCard content={trimMockupData(item.bodyHtml)} />
+                <ProductCard content={trimMockupData(item.bodyHtml)}>
+                  <CardImage imageSrc={item.imageSrc} />
+                </ProductCard>
               </li>
             ))
           )}
